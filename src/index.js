@@ -14,7 +14,7 @@ const swaggerOptions = {
      swaggerDefinition: {
          info: {
              title: 'Mi node',
-             description: ' Descripcio node',
+             description: 'Descripcio node',
              contact: {
                  name: "Toni"
              },
