@@ -1,0 +1,129 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters.",
+    "version": "1.0.0",
+    "title": "2DAMVi Toni Server",
+    "contact": {
+      "email": "a19tonguepar@inspedralbes.cat"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "basePath": "",
+  "tags": [
+    {
+      "name": "Toni DAMVI Server",
+      "description": "All about our server",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    },
+    {
+      "name": "Ranking",
+      "description": "Operations about the ranking"
+    },
+    {
+      "name": "Player",
+      "description": "Operations about players"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "server"
+        ],
+        "summary": "Test if server is working",
+        "description": "",
+        "responses": {
+          "100": {
+            "description": "2-DAMVI Server Up"
+          }
+        }
+      }
+    },
+    "/ranking": {
+      "get": {
+        "tags": [
+          "Ranking"
+        ],
+        "summary": "View Ranking",
+        "description": "View ranking of players",
+        "operationId": "viewRanking"
+      }
+    },
+    "/players/{alias}": {
+      "post": {
+        "tags": [
+          "Player"
+        ],
+        "summary": "Create Player",
+        "operationId": "createPlayer",
+        "parameters": [
+          {
+            "name": "alias",
+            "in": "path",
+            "description": "The name that needs to be fetched. Use user1 for testing. ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful  operation"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Player"
+        ],
+        "summary": "View Player",
+        "operationId": "viewPlayer",
+        "parameters": [
+          {
+            "name": "alias",
+            "in": "path",
+            "description": "The name that needs to be fetched. Use user1 for testing. ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful  operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Player"
+        ],
+        "summary": "Update Player",
+        "parameters": [
+          {
+            "name": "alias",
+            "in": "path",
+            "description": "The name that needs to be fetched. Use user1 for testing. ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful  operation"
+          }
+        }
+      }
+    }
+  }
+  
+}
