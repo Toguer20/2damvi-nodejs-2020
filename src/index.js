@@ -18,7 +18,7 @@ const swaggerOptions = {
              contact: {
                  name: "Toni"
              },
-            servers: ["https://localhost:5000"]
+            servers: ["https://localhost:"+puerto]
          }
      },
      apis: ["api.js"]
