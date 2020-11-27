@@ -28,8 +28,9 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 const puerto = process.env.PORT || 5000;
 app.listen(puerto, () => {
-    console.log(`El servidor está inicializado en el puerto '+puerto);
+    console.log('El servidor está inicializado en el puerto '+puerto);
 });
+
 //app.listen(process.env.PORT);
 
 
