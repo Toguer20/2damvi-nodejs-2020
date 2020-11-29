@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+
 const api = require('./api.js');
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -25,7 +26,7 @@ const swaggerOptions = {
      apis: ["api.js"]
 };
 
-const swaggerDocs = swaggerJsDoc(swaggerOptions);
+const swaggerDocs = require('./swagger.json');
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.listen(puerto, () => {

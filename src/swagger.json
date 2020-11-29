@@ -1,9 +1,9 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters.",
+    "description": "Api server",
     "version": "1.0.0",
-    "title": "2DAMVi Toni Server",
+    "title": "Api Toni Guerra",
     "contact": {
       "email": "a19tonguepar@inspedralbes.cat"
     },
@@ -12,118 +12,132 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
-  "basePath": "",
-  "tags": [
-    {
-      "name": "Toni DAMVI Server",
-      "description": "All about our server",
-      "externalDocs": {
-        "description": "Find out more",
-        "url": "http://swagger.io"
-      }
-    },
-    {
-      "name": "Ranking",
-      "description": "Operations about the ranking"
-    },
-    {
-      "name": "Player",
-      "description": "Operations about players"
-    }
-  ],
-  "schemes": [
-    "https",
-    "http"
-  ],
   "paths": {
     "/": {
       "get": {
-        "tags": [
-          "server"
-        ],
-        "summary": "Test if server is working",
-        "description": "",
+        "description": "Use to know if works",
+        "parameters": [],
         "responses": {
           "100": {
-            "description": "2-DAMVI Server Up"
+            "description": "code",
+            "schema": {
+              "$ref": "#/definitions/code"
+            }
           }
         }
-      }
-    },
-    "/ranking": {
-      "get": {
-        "tags": [
-          "Ranking"
-        ],
-        "summary": "View Ranking",
-        "description": "View ranking of players",
-        "operationId": "viewRanking"
       }
     },
     "/players/{alias}": {
-      "post": {
-        "tags": [
-          "Player"
-        ],
-        "summary": "Create Player",
-        "operationId": "createPlayer",
+      "get": {
+        "description": "Get information about a Player",
         "parameters": [
           {
             "name": "alias",
             "in": "path",
-            "description": "The name that needs to be fetched. Use user1 for testing. ",
             "required": true,
             "type": "string"
           }
         ],
         "responses": {
-          "default": {
-            "description": "successful  operation"
+          "200": {
+            "description": "Get information about a Player",
+            "schema": {
+              "$ref": "#/definitions/player"
+            }
           }
         }
       },
-      "get": {
-        "tags": [
-          "Player"
-        ],
-        "summary": "View Player",
-        "operationId": "viewPlayer",
+      "post": {
         "parameters": [
           {
             "name": "alias",
             "in": "path",
-            "description": "The name that needs to be fetched. Use user1 for testing. ",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "player",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/player"
+            }
           }
         ],
         "responses": {
-          "default": {
-            "description": "successful  operation"
+          "100": {
+            "description": "code",
+            "schema": {
+              "$ref": "#/definitions/code"
+            }
           }
         }
       },
       "put": {
-        "tags": [
-          "Player"
-        ],
-        "summary": "Update Player",
         "parameters": [
           {
             "name": "alias",
             "in": "path",
-            "description": "The name that needs to be fetched. Use user1 for testing. ",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "player",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/player"
+            }
           }
         ],
         "responses": {
-          "default": {
-            "description": "successful  operation"
+          "201": {
+            "description": "Insert a new Player",
+            "schema": {
+              "$ref": "#/definitions/player"
+            }
           }
         }
       }
     }
+  },
+  "definitions": {
+    "player": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Toni"
+        },
+        "surname": {
+          "type": "string",
+          "example": "Guerra"
+        },
+        "score": {
+          "type": "integer",
+          "example": 500
+        }
+      }
+    },
+    "code": {
+      "type": "object",
+      "required": [
+        "code"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "example": 100
+        },
+        "error": {
+          "type": "boolean",
+          "example": false
+        },
+        "message": {
+          "type": "string",
+          "example": "2-DAMVI Server Up"
+        }
+      }
+    }
   }
-  
 }
